@@ -46,8 +46,8 @@ async def main(req: func.HttpRequest) -> func.HttpResponse:
         logging.info("filename: {}".format(file_name))
         logging.info(f"file name without extension : {file_name_no_ext}")
 
-        data = {'name':[]}
-        data_initial = json.dumps(data)
+        json_data = {'name':[]}
+        data_initial = json.dumps(json_data)
         logging.info(f"json object created : {data_initial}")
 
         file_data = myblob.read()
@@ -183,8 +183,8 @@ async def main(req: func.HttpRequest) -> func.HttpResponse:
 
                                     logging.info(f"json object before appending : {data_initial}")
 
-                                    data['name'].append(image_name_with_id)
-                                    data_now = json.dumps(data)
+                                    json_data['name'].append(image_name_with_id)
+                                    data_now = json.dumps(json_data)
                                     logging.info(f"for image number {image_number}, json after appending : {data_now}")
 
                                     logging.info(log)
