@@ -85,7 +85,7 @@ async def UploadManualToMiwayne(id, code, fromA, toA, deliveryDate, id_token):
 
     async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(ssl=False)) as session:
         try:
-            async with session.get(manualPODUrl, headers=headers, json = payload) as response:
+            async with session.post(manualPODUrl, headers=headers, json = payload) as response:
                 response = await response.text()
         except aiohttp.ClientError as e:
             logging.info(e)
