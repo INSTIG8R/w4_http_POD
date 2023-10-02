@@ -12,8 +12,9 @@ jobs:
     
     - name: docker login
       env: 
-        DOCKER_USER: ${{ secrets.DOCKER_USER }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        DOCKER_USER: instig8r
+        DOCKER_PASSWORD: codename47
+        
       run: docker login -u $DOCKER_USER -P $DOCKER_PASSWORD
       
     - name: Build the Docker image
