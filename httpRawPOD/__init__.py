@@ -175,15 +175,17 @@ async def main(req: func.HttpRequest) -> func.HttpResponse:
                                     image_path_with_id = os.path.join(image_folder, file_name_no_ext + "_page_" + image_number + "_" + id_value + '.png')
                                     image_name_with_id = file_name_no_ext + "_page_" + image_number + "_" + id_value + '.png'
 
-                                    logging.info(image_path_with_id)
+                                    logging.info(f"\n\nimage name with id is : {image_path_with_id}")
 
                                     image.save(image_path_with_id, 'PNG')
 
                                     log = UploadTo_rawimage(image_path_with_id, image_name_with_id)
 
+                                    logging.info(f"json object before appending : {data_initial}")
+
                                     data['name'].append(image_name_with_id)
                                     data_now = json.dumps(data)
-                                    logging.info(f"for image number {image_number}, current json data is : {data_now}")
+                                    logging.info(f"for image number {image_number}, json after appending : {data_now}")
 
                                     logging.info(log)
                                     logging.info(f"Image number:{i + 1} ended")
