@@ -5,6 +5,7 @@ import os
 import asyncio
 import tempfile
 import aiohttp
+import json
 
 from pdf2image import convert_from_path
 from PIL import Image
@@ -44,6 +45,10 @@ async def main(req: func.HttpRequest) -> func.HttpResponse:
 
         logging.info("filename: {}".format(file_name))
         logging.info(f"file name without extension : {file_name_no_ext}")
+
+        data = {'name':[]}
+        data_initial = json.dumps(data)
+        logging.info(f"json object created : {data_initial}")
 
         file_data = myblob.read()
         encoded_string = base64.b64encode(file_data)
@@ -175,6 +180,10 @@ async def main(req: func.HttpRequest) -> func.HttpResponse:
                                     image.save(image_path_with_id, 'PNG')
 
                                     log = UploadTo_rawimage(image_path_with_id, image_name_with_id)
+
+                                    data['name'].append(image_name_with_id)
+                                    data_now = json.dumps(data)
+                                    logging.info(f"for image number {image_number}, current json data is : {data_now}")
 
                                     logging.info(log)
                                     logging.info(f"Image number:{i + 1} ended")
