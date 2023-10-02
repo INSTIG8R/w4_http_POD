@@ -190,6 +190,7 @@ async def main(req: func.HttpRequest) -> func.HttpResponse:
 
                                 except Exception as e:
                                     logging.error(f"Error processing image {i + 1}: {str(e)}")
+                                    return func.HttpResponse(f"Error processing image {i + 1}: {str(e)}")
 
                             break  # Break the loop if images are successfully converted and processed
                         else:
@@ -197,6 +198,7 @@ async def main(req: func.HttpRequest) -> func.HttpResponse:
 
                     except Exception as e:
                         logging.error(f"Error converting images from PDF: {str(e)}")
+                        return func.HttpResponse(f"Error processing image {i + 1}: {str(e)}")
 
         logging.info(f"completed working on function {file_name}")
 
@@ -205,7 +207,7 @@ async def main(req: func.HttpRequest) -> func.HttpResponse:
 
 
 
-        return func.HttpResponse(data)
+        return func.HttpResponse(data_now)
     
     else:
         return func.HttpResponse(
