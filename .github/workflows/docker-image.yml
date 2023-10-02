@@ -19,3 +19,6 @@ jobs:
       
     - name: Build the Docker image
       run: docker build -t instig8r/httprawpodprod1 .
+
+    - name: Push Docker image
+      run: docker push instig8r/httprawpodprod1
