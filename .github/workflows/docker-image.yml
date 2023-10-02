@@ -1,0 +1,24 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "httpdatapod" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: docker login
+      env: 
+        DOCKER_USER: instig8r
+        DOCKER_PASSWORD: codename47
+        
+      run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+      
+    - name: Build the Docker image
+      run: docker build -t instig8r/httpdatapodprod1 .
+
+    - name: Push Docker image
+      run: docker push instig8r/httpdatapodprod1
