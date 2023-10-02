@@ -175,7 +175,7 @@ async def main(req: func.HttpRequest) -> func.HttpResponse:
                                     image_path_with_id = os.path.join(image_folder, file_name_no_ext + "_page_" + image_number + "_" + id_value + '.png')
                                     image_name_with_id = file_name_no_ext + "_page_" + image_number + "_" + id_value + '.png'
 
-                                    logging.info(f"\n\nimage name with id is : {image_path_with_id}")
+                                    logging.info(f"\n\nimage name with id is : {image_name_with_id}")
 
                                     image.save(image_path_with_id, 'PNG')
 
