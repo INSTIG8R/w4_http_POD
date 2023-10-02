@@ -205,7 +205,7 @@ async def main(req: func.HttpRequest) -> func.HttpResponse:
 
 
 
-        return func.HttpResponse(f"httpRawPOD function executed for input blob name : {inputBlobName}")
+        return func.HttpResponse(data)
     
     else:
         return func.HttpResponse(
