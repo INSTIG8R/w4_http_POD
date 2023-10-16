@@ -224,11 +224,8 @@ async def main(req: func.HttpRequest) -> func.HttpResponse:
                         logging.info(f"finised working on {filename_png}")
 
             logging.info(f"completed working on function {fileName}")
-
-
-
-
-            return func.HttpResponse(f"dataRawPOD function executed for input blob name : {inputBlobName}")
+            
+        return func.HttpResponse(f"dataRawPOD function executed for input blob name : {inputBlobName}")
     else:
         return func.HttpResponse(
              "Blob URL or Name not found",
